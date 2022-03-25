@@ -1,0 +1,22 @@
+version: "3"
+services:
+  web:
+    #nombre de mi app 
+    container_name: exampleapp
+    #si se cae reiniciar
+    restart: always
+    #ejecutar mi imagen de node es decir el dockerfile
+    build: .
+    ports:
+      - "5000:3000"
+    links:
+      - mongo  
+    volumes:
+      - .:/usr/src/app
+  mongo:
+    container_name: mymongodatabase
+    image: mongo
+    ports:
+      - "27018:27017"
+
+    
